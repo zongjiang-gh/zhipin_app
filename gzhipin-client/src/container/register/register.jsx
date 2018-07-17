@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import {
   NavBar,
-  WhiteSpace,
+  WingBlank,
   List,
   InputItem,
   WhiteSpace,
   Radio, Button
 } from 'antd-mobile';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import Logo from '../../components/logo/logo';
+import {register} from "../../redux/actions";
 
 class Register extends Component {
   state={
@@ -24,16 +27,21 @@ class Register extends Component {
     this.props.history.replace('/login');
   };
   register = () => {
-    console.log(JSON.stringify(this.state));
+    this.props.register(this.state)
   };
 
   render() {
     const {type} = this.state;
+    const {redirectTo,msg} =this.props;
+    if(redirectTo){
+      return <Redirect to={redirectTo}/>
+    }
     return (
       <div>
         <NavBar>硅谷直聘</NavBar>
         <Logo/>
         <WingBlank>
+          {msg ? <p className='error-msg'>{msg}</p> : null}
           <List>
             <InputItem placeholder='输入用户名' onChange={val => this.handleChange('username',val)}>
              用户名:
@@ -64,4 +72,7 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connect(state=>state.user,
+  {
+    register
+  })(Register);
