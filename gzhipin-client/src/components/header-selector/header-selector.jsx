@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Grid, List} from 'antd-mobile';
-import PropTypes from 'props-types';
+import PropTypes from 'prop-types';
 
-class HeaderSelector extends Component{
+class HeaderSelector extends Component {
   constructor(props) {
     super(props);
     this.headerList = [];
@@ -25,15 +25,16 @@ class HeaderSelector extends Component{
 
   render() {
     const {icon} = this.state;
-    const gridHeader = icon ? <p>已选择头像:<img src={icon} alt="header img" /></p>:'请选择头像';
-  return(
-    <List renderHeader={() => gridHeader}>
-      <Grid data={this.headerList}
-            column={5}
-            onClick={this.selectorHeader}
-      />
-    </List>
-  );
+    const gridHeader = icon ? <p>已选择头像:<img src={icon} alt="header img"/></p> : '请选择头像';
+    return (
+      <List renderHeader={() => gridHeader}>
+        <Grid data={this.headerList}
+              column={5}
+              onClick={this.selectorHeader}
+        />
+      </List>
+    );
   }
-  }
-  export default HeaderSelector;
+}
+
+export default HeaderSelector;

@@ -1,4 +1,8 @@
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const ERROR_MSG = 'ERROR_MSG';
-export const RECEIVE_USER = 'RECEIVE_USER';
-export const RESET_USER = 'RESET_USER';
+export const AUTH_SUCCESS = 'auth_success';
+export const ERROR_MSG = 'error_msg';
+export const RECEIVE_USER = 'receive_user';
+export const RESET_USER = 'reset_user';
+export const RECEIVE_USERs_LIST = 'receive_users_list';
+export const RECEIVE_MSG_LIST = 'receive_msg_list';
+export const RECEIVE_MSG = 'receive_msg';
+export const MSG_READ = 'msg_read';

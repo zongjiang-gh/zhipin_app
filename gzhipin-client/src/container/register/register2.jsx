@@ -12,6 +12,7 @@ import {Redirect} from 'react-router-dom';
 
 import Logo from '../../components/logo/logo';
 import {register} from "../../redux/actions";
+import {reqRegister} from "../../api";
 
 class Register extends Component {
   state={
@@ -27,7 +28,18 @@ class Register extends Component {
     this.props.history.replace('/login');
   };
   register = () => {
-    this.props.register(this.state)
+    reqRegister(this.state)
+      .then((res) => {
+        console.log(res);
+        if(res.data.code ===0){
+          console.log('成功失败了');
+        }else{
+          console.log('失败了');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   render() {
@@ -72,8 +84,7 @@ class Register extends Component {
   }
 }
 
-export default connect(
-  state=>state.user,
+export default connect(state=>state.user,
   {
     register
   })(Register);
